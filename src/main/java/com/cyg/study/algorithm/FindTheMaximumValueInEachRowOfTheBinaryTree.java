@@ -30,12 +30,14 @@ public class FindTheMaximumValueInEachRowOfTheBinaryTree {
                 //出队
                 TreeNode node = queue.poll();
                 //记录每层的最大值
-                max = Math.max(max, node.getVal());
-                if (node.getLeft() != null) {
-                    queue.add(node.getLeft());
-                }
-                if (node.getRight() != null) {
-                    queue.add(node.getRight());
+                if (node != null) {
+                    max = Math.max(max, node.getVal());
+                    if (node.getLeft() != null) {
+                        queue.add(node.getLeft());
+                    }
+                    if (node.getRight() != null) {
+                        queue.add(node.getRight());
+                    }
                 }
             }
             values.add(max);
@@ -45,8 +47,8 @@ public class FindTheMaximumValueInEachRowOfTheBinaryTree {
 
     public static void main(String[] args) {
         FindTheMaximumValueInEachRowOfTheBinaryTree value = new FindTheMaximumValueInEachRowOfTheBinaryTree();
-        TreeNode treeNodeLeft = new TreeNode(2, new TreeNode(0,null,null), new TreeNode(8,null,null));
-        TreeNode treeNodeRight = new TreeNode(5, new TreeNode(7,null,null), new TreeNode(9,null,null));
+        TreeNode treeNodeLeft = new TreeNode(2, new TreeNode(0, null, null), new TreeNode(8, null, null));
+        TreeNode treeNodeRight = new TreeNode(5, new TreeNode(7, null, null), new TreeNode(9, null, null));
         TreeNode root = new TreeNode(1, treeNodeLeft, treeNodeRight);
         List<Integer> integers = value.helper(root);
         System.out.println(integers);
