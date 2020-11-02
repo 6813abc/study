@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: aim
+    password: aim-12345
+    url: jdbc:mysql://10.4.144.171:3306/aim?characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  type-aliases-package: com.cyg.study.entity
+  mapper-locations: classpath:dao/*.xml

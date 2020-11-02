@@ -1,4 +1,4 @@
-package com.cyg.study.becn;
+package com.cyg.study.bean;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

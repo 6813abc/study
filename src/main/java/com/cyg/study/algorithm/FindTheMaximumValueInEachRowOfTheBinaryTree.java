@@ -1,7 +1,7 @@
 package com.cyg.study.algorithm;
 
 
-import com.cyg.study.becn.TreeNode;
+import com.cyg.study.bean.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
