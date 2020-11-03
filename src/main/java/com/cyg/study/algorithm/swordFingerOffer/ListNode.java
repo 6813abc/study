@@ -5,9 +5,10 @@ package com.cyg.study.algorithm.swordFingerOffer;
  * @date 2020/11/2 16:02
  **/
 public class ListNode {
-    int val;
-    ListNode next = null;
-    ListNode(int val) {
+    public int val;
+    public ListNode next = null;
+
+    public ListNode(int val) {
         this.val = val;
     }
 }
