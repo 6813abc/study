@@ -1,4 +1,4 @@
-package com.cyg.study;
+package com.cyg.study.algorithm;
 
 import com.cyg.study.algorithm.swordFingerOffer.ListNode;
 
