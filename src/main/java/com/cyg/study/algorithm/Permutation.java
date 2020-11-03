@@ -44,5 +44,4 @@ public class Permutation {
         cs[i] = cs[j];
         cs[j] = temp;
     }
-
 }
