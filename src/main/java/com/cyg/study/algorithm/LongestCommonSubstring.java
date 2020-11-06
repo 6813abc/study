@@ -40,10 +40,10 @@ public class LongestCommonSubstring {
     //动态规则
     public static String LCS(String str1, String str2) {
         if (str1 == null || str2 == null) {
-            return "";
+            return "-1";
         }
         int maxLen = 0;
-        StringBuilder maxStr = new StringBuilder();
+        String maxStr = "";
         int[][] s = new int[str1.length() + 1][str2.length() + 1];
         for (int i = 1; i < str1.length(); i++) {
             for (int j = 1; j < str2.length(); j++) {
@@ -51,21 +51,18 @@ public class LongestCommonSubstring {
                     s[i][j] = s[i - 1][j - 1] + 1;
                     if (s[i][j] > maxLen) {
                         maxLen = s[i][j];
-                        maxStr = new StringBuilder();
-                        for (int m = maxLen; m >= 1; m--) {
-                            maxStr.append(str2.charAt(j - m));
-                        }
+                        maxStr = str2.substring(j - maxLen, j);
                     }
                 }
             }
         }
-        return maxStr.toString();
+        return maxStr.equals("") ? "-1" : maxStr;
     }
 
 
     public static void main(String[] args) {
         //暴力
-        System.out.println(LongestCommonSubstring.force("1AB2345CD", "12345EF"));
+        //System.out.println(LongestCommonSubstring.force("1AB2345CD", "12345EF"));
         //动态规划
         System.out.println(LongestCommonSubstring.LCS("1AB2345CD", "12345EF"));
     }
