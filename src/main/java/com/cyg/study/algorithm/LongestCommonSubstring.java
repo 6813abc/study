@@ -64,7 +64,9 @@ public class LongestCommonSubstring {
 
 
     public static void main(String[] args) {
+        //暴力
         System.out.println(LongestCommonSubstring.force("1AB2345CD", "12345EF"));
+        //动态规划
         System.out.println(LongestCommonSubstring.LCS("1AB2345CD", "12345EF"));
     }
 }
