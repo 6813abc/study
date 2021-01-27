@@ -1,0 +1,26 @@
+version: '3'
+services:
+  study:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4567:9091"
+    volumes:
+      - .:/vol/development
+    depends_on:
+      - mysqldbserver
+    env_file:
+      - .env
+
+  mysqldbserver:
+    image: mysql:5.7
+    container_name: mysqldbserver
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ../data/mysql:/var/lib/mysql
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: root123

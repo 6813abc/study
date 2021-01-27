@@ -1,12 +1,12 @@
 server:
-  port: 8080
+  port: 9091
 
 spring:
   datasource:
-    username: aim
-    password: aim-12345
-    url: jdbc:mysql://10.4.144.171:3306/aim?characterEncoding=UTF-8
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:192.168.99.100}:${DATASOURCE_PORT:3306}/sc_study?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:root123}
 
 mybatis:
   type-aliases-package: com.cyg.study.entity

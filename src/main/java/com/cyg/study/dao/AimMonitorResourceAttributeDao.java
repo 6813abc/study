@@ -1,6 +1,6 @@
 package com.cyg.study.dao;
 
-import com.cyg.study.bean.AimMonitorResourceAttribute;
+import com.cyg.study.bean.StaticValue;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface AimMonitorResourceAttributeDao {
 
-    AimMonitorResourceAttribute selectOneAttrByResourceIdAndKey(AimMonitorResourceAttribute attribute);
+    StaticValue selectOne(String key);
 }
