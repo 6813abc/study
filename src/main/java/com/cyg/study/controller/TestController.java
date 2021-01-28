@@ -21,6 +21,6 @@ public class TestController {
     @RequestMapping("/test")
     public StaticValue pluginTest(String key) {
         log.debug("入参：{}", key);
-        return null;
+        return testService.getByKey(key);
     }
 }
