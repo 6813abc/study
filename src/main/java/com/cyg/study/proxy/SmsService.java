@@ -1,4 +1,4 @@
-package com.cyg.study.proxy.staticProxy;
+package com.cyg.study.proxy;
 
 /**
  * @author cyg

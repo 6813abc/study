@@ -1,4 +1,6 @@
-package com.cyg.study.proxy.staticProxy;
+package com.cyg.study.proxy;
+
+import com.cyg.study.proxy.SmsService;
 
 /**
  * @author cyg

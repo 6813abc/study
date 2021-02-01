@@ -1,5 +1,8 @@
 package com.cyg.study.proxy.staticProxy;
 
+import com.cyg.study.proxy.SmsService;
+import com.cyg.study.proxy.SmsServiceImpl;
+
 /**
  * @author cyg
  * @date 2021/2/1 16:18
