@@ -1,4 +1,4 @@
-package com.cyg.study.proxy;
+package com.cyg.study.proxy.service;
 
 /**
  * @author cyg

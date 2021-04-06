@@ -1,7 +1,7 @@
 package com.cyg.study.proxy.dynamicProxy;
 
-import com.cyg.study.proxy.SmsService;
-import com.cyg.study.proxy.SmsServiceImpl;
+import com.cyg.study.proxy.service.SmsService;
+import com.cyg.study.proxy.impl.SmsServiceImpl;
 
 import java.lang.reflect.Proxy;
 
@@ -19,6 +19,6 @@ public class JdkProxyFactory {
 
     public static void main(String[] args) {
         SmsService smsService = (SmsService) JdkProxyFactory.getProxy(new SmsServiceImpl());
-        smsService.send("java");
+        smsService.send("JdkProxyFactory");
     }
 }

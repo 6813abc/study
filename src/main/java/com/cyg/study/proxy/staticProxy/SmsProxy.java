@@ -1,7 +1,10 @@
 package com.cyg.study.proxy.staticProxy;
 
-import com.cyg.study.proxy.SmsService;
-import com.cyg.study.proxy.SmsServiceImpl;
+import com.cyg.study.proxy.service.SmsService;
+import com.cyg.study.proxy.impl.SmsServiceImpl;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @author cyg
@@ -24,9 +27,20 @@ public class SmsProxy implements SmsService {
         return null;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        //静态代理
         SmsService smsService = new SmsServiceImpl();
         SmsProxy smsProxy = new SmsProxy(smsService);
-        smsProxy.send("java");
+        smsProxy.send("SmsProxy");
+
+        //反射
+        Class<?> tagetClass = Class.forName("com.cyg.study.proxy.impl.SmsServiceImpl");
+        SmsService targetObject = (SmsServiceImpl) tagetClass.newInstance();
+        Method[] methods = tagetClass.getDeclaredMethods();
+        for (Method method : methods) {
+            System.out.println(method.getName());
+        }
+        Method publicMethod = tagetClass.getDeclaredMethod("send", String.class);
+        publicMethod.invoke(targetObject, "reflection");
     }
 }
