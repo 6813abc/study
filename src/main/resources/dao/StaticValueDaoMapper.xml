@@ -7,10 +7,24 @@
         <result column="default_value" jdbcType="VARCHAR" property="defaultValue"/>
     </resultMap>
 
+    <resultMap id="lazyUserMap" type="com.cyg.study.Query.UserQuery">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="static_id" jdbcType="INTEGER" property="staticId"/>
+        <association column="static_id" javaType="com.cyg.study.bean.StaticValue" select="selectOne"
+                     property="staticValue">
+            <result column="key" jdbcType="VARCHAR" property="key"/>
+            <result column="value" jdbcType="VARCHAR" property="value"/>
+            <result column="default_value" jdbcType="VARCHAR" property="defaultValue"/>
+        </association>
+    </resultMap>
 
     <select id="selectOne" parameterType="com.cyg.study.bean.StaticValue" resultMap="staticValueMap">
         select * from static_data
         where `key` = #{key}
         limit 1
+    </select>
+
+    <select id="findUser" resultMap="lazyUserMap">
+        SELECT * FROM `user`;
     </select>
 </mapper>

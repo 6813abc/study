@@ -11,3 +11,9 @@ spring:
 mybatis:
   type-aliases-package: com.cyg.study.entity
   mapper-locations: classpath:dao/*.xml
+  configuration:
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+logging:
+  level:
+    com.cyg.study.dao: debug

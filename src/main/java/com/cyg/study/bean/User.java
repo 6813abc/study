@@ -1,5 +1,6 @@
 package com.cyg.study.bean;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,8 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class StaticValue {
-    private String key;
-    private String value;
-    private String defaultValue;
+public class User {
+    private String id;
+    private String staticId;
 }

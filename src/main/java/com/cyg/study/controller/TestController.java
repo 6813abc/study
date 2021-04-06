@@ -24,12 +24,15 @@ import java.util.concurrent.ThreadPoolExecutor;
 @RestController
 public class TestController {
 
-    @Autowired
-    TestService testService;
-    @Autowired
-    private UserThreadService userThreadService;
-    @Autowired
-    private VisiableThreadPoolTaskExecutor visiableThreadPoolTaskExecutor;
+    private final TestService testService;
+    private final UserThreadService userThreadService;
+    private final VisiableThreadPoolTaskExecutor visiableThreadPoolTaskExecutor;
+
+    public TestController(TestService testService, UserThreadService userThreadService, VisiableThreadPoolTaskExecutor visiableThreadPoolTaskExecutor) {
+        this.testService = testService;
+        this.userThreadService = userThreadService;
+        this.visiableThreadPoolTaskExecutor = visiableThreadPoolTaskExecutor;
+    }
 
     @RequestMapping("/test")
     public StaticValue pluginTest(String key) {
@@ -37,10 +40,15 @@ public class TestController {
         return testService.getByKey(key);
     }
 
+    @RequestMapping("/findUser")
+    public void findUser() {
+        testService.findUser();
+    }
+
     @GetMapping("asyncServiceExecutor")
-    public Object  serviceTest() throws JSONException {
+    public Object serviceTest() {
         userThreadService.serviceTest();
-        Map map  = new ConcurrentHashMap();
+        Map map = new ConcurrentHashMap();
         ThreadPoolExecutor threadPoolExecutor = visiableThreadPoolTaskExecutor.getThreadPoolExecutor();
         map.put("ThreadNamePrefix", visiableThreadPoolTaskExecutor.getThreadNamePrefix());
         map.put("TaskCount", threadPoolExecutor.getTaskCount());
