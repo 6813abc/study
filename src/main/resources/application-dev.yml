@@ -7,6 +7,11 @@ spring:
     url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:192.168.99.100}:${DATASOURCE_PORT:3306}/sc_study?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
     username: ${DATASOURCE_USERNAME:root}
     password: ${DATASOURCE_PASSWORD:root123}
+#kafka
+  kafka:
+    bootstrap-servers: 192.168.99.100:9092
+    consumer:
+      group-id: test-consumer-group
 
 mybatis:
   type-aliases-package: com.cyg.study.entity
@@ -16,4 +21,6 @@ mybatis:
     aggressive-lazy-loading: false
 logging:
   level:
-    com.cyg.study.dao: debug
+    com.cyg.study: debug
+
+

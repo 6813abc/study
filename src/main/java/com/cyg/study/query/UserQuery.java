@@ -1,4 +1,4 @@
-package com.cyg.study.Query;
+package com.cyg.study.query;
 
 import com.cyg.study.bean.StaticValue;
 import lombok.Getter;

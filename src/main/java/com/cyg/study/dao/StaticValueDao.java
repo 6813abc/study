@@ -1,8 +1,7 @@
 package com.cyg.study.dao;
 
-import com.cyg.study.Query.UserQuery;
+import com.cyg.study.query.UserQuery;
 import com.cyg.study.bean.StaticValue;
-import com.cyg.study.bean.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

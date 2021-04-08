@@ -1,6 +1,6 @@
 package com.cyg.study.service;
 
-import com.cyg.study.Query.UserQuery;
+import com.cyg.study.query.UserQuery;
 import com.cyg.study.bean.StaticValue;
 import com.cyg.study.dao.StaticValueDao;
 import lombok.extern.slf4j.Slf4j;

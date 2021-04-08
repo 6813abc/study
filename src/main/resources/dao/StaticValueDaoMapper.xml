@@ -7,7 +7,7 @@
         <result column="default_value" jdbcType="VARCHAR" property="defaultValue"/>
     </resultMap>
 
-    <resultMap id="lazyUserMap" type="com.cyg.study.Query.UserQuery">
+    <resultMap id="lazyUserMap" type="com.cyg.study.query.UserQuery">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="static_id" jdbcType="INTEGER" property="staticId"/>
         <association column="static_id" javaType="com.cyg.study.bean.StaticValue" select="selectOne"
