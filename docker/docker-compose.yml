@@ -25,3 +25,20 @@ services:
     environment:
       TZ: Asia/Shanghai
       MYSQL_ROOT_PASSWORD: root123
+  redis:
+    image: redis:alpine
+    container_name: sc-redis
+    restart: always
+    volumes:
+      - ../data/redis:/data
+    environment:
+      - REDIS_PASSWORD=123456
+    networks:
+      - sc-net
+    ports:
+      - 6379:6379
+    env_file: .env
+
+networks:
+  sc-net:
+    external: false

@@ -12,7 +12,6 @@ spring:
     bootstrap-servers: 192.168.99.100:9092
     consumer:
       group-id: test-consumer-group
-
 mybatis:
   type-aliases-package: com.cyg.study.entity
   mapper-locations: classpath:dao/*.xml
@@ -23,4 +22,10 @@ logging:
   level:
     com.cyg.study: debug
 
-
+#java端口9300，http端口9200
+elasticsearch:
+  ip: 192.168.99.100
+  port: 9300
+  pool: 5
+  cluster:
+    name: docker-cluster
