@@ -34,8 +34,7 @@ public class DeadLockDemo {
                     System.out.println(Thread.currentThread().getName() + " get resource2");
                 }
             }
-        }, "线程1").start();
-
+        }, "线程1");
         new Thread(() -> {
             synchronized (resource2) {
                 System.out.println(Thread.currentThread().getName() + " get resource2");
