@@ -1,6 +1,7 @@
 package com.cyg.study.algorithm;
 
 import com.cyg.study.algorithm.swordFingerOffer.ListNode;
+import org.elasticsearch.search.SearchHit;
 
 /**
  * 删除链表中倒数第k个节点
@@ -10,6 +11,10 @@ import com.cyg.study.algorithm.swordFingerOffer.ListNode;
  **/
 public class DeleteKNode {
     public static void main(String[] args) {
+        /*String[] s = "1\\1\\1".split("\\\\");
+        for (String s1 : s){
+            System.out.println(s1);
+        }*/
         int[] arr = {1, 2, 3, 4, 5, 6, 7, 8};
         ListNode head = new ListNode(arr[0]);
         ListNode n = head;
