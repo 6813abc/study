@@ -103,19 +103,17 @@ public class SnowFlake {
             }
             countDownLatch.countDown();
         });
-        List<Long> finalIds1 = ids;
         Thread thread2 = new Thread(() -> {
             SnowFlake snowFlake = new SnowFlake(1, 2);
             for (int i = 0; i < 1000; i++) {
-                finalIds1.add(snowFlake.nextId());
+                finalIds.add(snowFlake.nextId());
             }
             countDownLatch.countDown();
         });
-        List<Long> finalIds2 = ids;
         Thread thread3 = new Thread(() -> {
             SnowFlake snowFlake = new SnowFlake(1, 3);
             for (int i = 0; i < 1000; i++) {
-                finalIds2.add(snowFlake.nextId());
+                finalIds.add(snowFlake.nextId());
             }
             countDownLatch.countDown();
         });

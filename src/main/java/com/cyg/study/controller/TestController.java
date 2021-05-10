@@ -1,6 +1,7 @@
 package com.cyg.study.controller;
 
 import com.cyg.study.bean.StaticValue;
+import com.cyg.study.concurrent.distributedId.LeafParent;
 import com.cyg.study.config.VisiableThreadPoolTaskExecutor;
 import com.cyg.study.service.TestService;
 import com.cyg.study.service.UserThreadService;
@@ -28,6 +29,7 @@ public class TestController {
     private final UserThreadService userThreadService;
     private final VisiableThreadPoolTaskExecutor visiableThreadPoolTaskExecutor;
 
+    @Autowired
     public TestController(TestService testService, UserThreadService userThreadService, VisiableThreadPoolTaskExecutor visiableThreadPoolTaskExecutor) {
         this.testService = testService;
         this.userThreadService = userThreadService;
@@ -56,5 +58,10 @@ public class TestController {
         map.put("activeCount", threadPoolExecutor.getActiveCount());
         map.put("queueSize", threadPoolExecutor.getQueue().size());
         return map;
+    }
+
+    @GetMapping("/leafParent")
+    public void leafParent() throws InterruptedException {
+        testService.test();
     }
 }

@@ -1,14 +1,9 @@
-package com.cyg.study.service;
+package com.cyg.study.concurrent.distributedId;
 
-import com.cyg.study.query.UserQuery;
-import com.cyg.study.bean.StaticValue;
-import com.cyg.study.dao.StaticValueDao;
 import com.github.xiefusi.generator.persistence.model.Result;
 import com.github.xiefusi.generator.persistence.model.Status;
 import com.github.xiefusi.generator.persistence.util.IdUtil;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,42 +11,13 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
+ * 封装了美团的leaf-parent，分布式id生成，依赖数据库
+ *
  * @author cyg
- * @date 2020/9/3 15:20
+ * @date 2021/5/10 11:27
  **/
-@Slf4j
-@Service
-public class TestService {
-
-    private final StaticValueDao staticValueDao;
-
-    public TestService(StaticValueDao staticValueDao) {
-        this.staticValueDao = staticValueDao;
-    }
-
-    /**
-     * @param key key
-     **/
-    @Transactional
-    public StaticValue getByKey(String key) {
-        log.info("第一次查询,查询数据库");
-        staticValueDao.selectOne(key);
-        log.info("第二次查询，查询缓存,依赖于事务");
-        return staticValueDao.selectOne(key);
-    }
-
-    @Transactional
-    public void findUser() {
-        List<UserQuery> userQuerys = staticValueDao.findUser();
-        for (UserQuery userQuery : userQuerys) {
-            System.out.println(userQuery.getStaticId());
-        }
-        for (UserQuery userQuery : userQuerys) {
-            //懒加载，需要的时候才去查询数据库
-            System.out.println(userQuery.getStaticValue().getDefaultValue());
-        }
-    }
-
+@Configuration
+public class LeafParent {
     public void test() throws InterruptedException {
         CountDownLatch countDownLatch = new CountDownLatch(3);
         List<Long> ids = new ArrayList<>();
