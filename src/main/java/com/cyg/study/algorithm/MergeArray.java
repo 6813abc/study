@@ -14,7 +14,7 @@ import java.util.Arrays;
 public class MergeArray {
 
     public static void main(String[] args) {
-        int[] array1 = new int[20];
+        int[] array1 = new int[10];
         array1[0] = 1;
         array1[1] = 3;
         array1[2] = 5;
@@ -25,7 +25,7 @@ public class MergeArray {
     }
 
     /**
-     * @param m a的数据量
+     * @param m a数组的数据量
      **/
     private static int[] mergeArray(int a[], int b[], int m) {
         m = m - 1;
@@ -34,7 +34,9 @@ public class MergeArray {
         while (m >= 0 || n >= 0) {
             if (n < 0 || b[n] < a[m]) {
                 a[k] = a[m];
-                a[m] = 0;
+                if (k != m) {
+                    a[m] = 0;
+                }
                 m--;
             } else if (b[n] >= a[m]) {
                 a[k] = b[n];
