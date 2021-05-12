@@ -12,19 +12,14 @@ public class ThreadLocalTest {
     }
 
     public static void test() {
+        ThreadLocal<String> threadLocal = new ThreadLocal<>();
         Thread thread1 = new Thread(() -> {
-            ThreadLocal<String> threadLocal1 = new ThreadLocal<>();
-            ThreadLocal<String> threadLocal2 = new ThreadLocal<>();
-            threadLocal1.set("111");
-            threadLocal1.set("111-update");
-            threadLocal2.set("222");
-            System.out.println("threadLocal1:" + threadLocal1.get());
-            System.out.println("threadLocal2:" + threadLocal2.get());
+            threadLocal.set("111");
+            System.out.println("threadLocal1:" + threadLocal.get());
         });
         Thread thread2 = new Thread(() -> {
-            ThreadLocal<String> threadLocal3 = new ThreadLocal<>();
-            threadLocal3.set("333");
-            System.out.println("threadLocal3:" + threadLocal3.get());
+            threadLocal.set("222");
+            System.out.println("threadLocal1:" + threadLocal.get());
         });
         thread1.start();
         thread2.start();
