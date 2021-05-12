@@ -12,32 +12,28 @@ public class OrderPrint {
 
     public static void main(String[] args) {
         int threadCount = 3;
-        int max = 10;
+        int max = 100;
         for (int i = 0; i < threadCount; i++) {
             int finalI = i;
             new Thread(() -> {
                 while (true) {
                     synchronized (lock) {
                         //判断是否轮到当前线程执行,轮不到就wait
-                        while (current % threadCount != finalI) {
+                        if (current % threadCount == finalI) {
                             if (current > max) {
                                 break;
                             }
-                            try {
-                                // 若不是，则当前线程进入wait
-                                lock.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                            System.out.println("thread-" + finalI + " : " + current);
+                            current++;
+                            //唤醒其余wait线程
+                            lock.notifyAll();
                         }
-                        // 最大值跳出循环
-                        if (current > max) {
-                            break;
+                        try {
+                            // 若不是，则当前线程进入wait
+                            lock.wait();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        System.out.println("thread-" + finalI + " : " + current);
-                        current++;
-                        //唤醒其余wait线程
-                        lock.notifyAll();
                     }
                 }
             }).start();
