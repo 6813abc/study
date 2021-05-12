@@ -8,7 +8,7 @@ package com.cyg.study.concurrent.multiThread;
  **/
 public class OrderPrint {
     private static final Object lock = new Object();
-    static int current = 0;
+    static int current = 1;
 
     public static void main(String[] args) {
         int threadCount = 3;
@@ -18,7 +18,7 @@ public class OrderPrint {
             new Thread(() -> {
                 while (true) {
                     synchronized (lock) {
-                        // 判断是否轮到当前线程执行,轮不到就wait
+                        //判断是否轮到当前线程执行,轮不到就wait
                         while (current % threadCount != finalI) {
                             if (current > max) {
                                 break;
