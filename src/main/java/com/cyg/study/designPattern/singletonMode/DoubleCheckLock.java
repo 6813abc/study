@@ -1,22 +1,28 @@
 package com.cyg.study.designPattern.singletonMode;
 
 /**
+ * 双检锁实现单例模式
+ *
  * @author cyg
  * @date 2021/5/18 16:43
  **/
 public class DoubleCheckLock {
 
-    private static volatile DoubleCheckLock doubleCheckLock = null;
+    private static volatile DoubleCheckLock INSTANCE = null;
 
     private static DoubleCheckLock getInstance() {
-        if (doubleCheckLock == null) {
+        if (INSTANCE == null) {
             synchronized (DoubleCheckLock.class) {
-                if (doubleCheckLock == null) {
-                    doubleCheckLock = new DoubleCheckLock();
+                if (INSTANCE == null) {
+                    INSTANCE = new DoubleCheckLock();
                 }
             }
         }
-        return doubleCheckLock;
+        return INSTANCE;
+    }
+
+    private String getString() {
+        return "111";
     }
 
     public static void main(String[] args) {
