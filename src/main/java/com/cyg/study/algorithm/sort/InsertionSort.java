@@ -22,7 +22,7 @@ public class InsertionSort {
                 }
                 a[j + 1] = x;
             }
-            System.out.println(Arrays.toString(a));
+            System.out.println("第" + i + "次：" + Arrays.toString(a));
         }
     }
 
