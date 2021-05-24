@@ -1,0 +1,49 @@
+server:
+  port: 9091
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:127.0.0.1}:${DATASOURCE_PORT:3306}/study?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  #kafka
+  kafka:
+    bootstrap-servers: 192.168.99.100:9092
+    consumer:
+      group-id: test-consumer-group
+mybatis:
+  type-aliases-package: com.cyg.study.entity
+  mapper-locations: classpath:dao/*.xml
+  configuration:
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: false
+logging:
+  level:
+    com.cyg.study: debug
+
+#java端口9300，http端口9200
+elasticsearch:
+  ip: 192.168.99.100
+  port: 9300
+  pool: 5
+  cluster:
+    name: docker-cluster
+
+#分布式id生成配置，依赖数据库
+key-generator:
+  dbcust: true #默认为false(使用使用模块中的连接池，为false时下面的datasource可以不用配置)
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:${DATASOURCE_DBTYPE:mysql}://${DATASOURCE_HOST:192.168.99.100}:${DATASOURCE_PORT:3306}/sc_study?characterEncoding=UTF-8&useUnicode=true&useSSL=false&serverTimezone=GMT
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:root123}
+  businesses:
+    business-id: orderId #业务场景（必填）
+    begin: 1 #id开始自增点（非必填默认1L）
+    step: 5000 #自增步长（非必填默认5000）
+    description: orderId #业务场景秒速（非必填默认null）
