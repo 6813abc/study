@@ -1,6 +1,5 @@
 package com.cyg.study.bean;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
