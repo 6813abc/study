@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.array;
 
 
 /**

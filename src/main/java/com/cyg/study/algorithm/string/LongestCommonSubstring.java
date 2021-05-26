@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.string;
 
 /**
  * 给定两个字符串str1和str2,输出两个字符串的最长公共子串，如果最长公共子串为空，输出-1。

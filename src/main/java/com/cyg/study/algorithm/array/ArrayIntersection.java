@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.array;
 
 import java.util.ArrayList;
 import java.util.List;

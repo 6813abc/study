@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.linklist;
 
 import com.cyg.study.algorithm.swordFingerOffer.ListNode;
 import org.elasticsearch.search.SearchHit;

@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.array;
 
 /**
  * 有一个整数数组，请你根据快速排序的思路，找出数组中第K大的数。

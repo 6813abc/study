@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.string;
 
 /**
  * 把括号内的字符串逆序，有嵌套

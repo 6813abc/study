@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.tree;
 
 
 import com.cyg.study.bean.TreeNode;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-/**
+/**二叉树每层最大值
  * @author cyg
  * @date 2020/8/31 10:00
  **/

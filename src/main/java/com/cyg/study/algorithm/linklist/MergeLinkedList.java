@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.linklist;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

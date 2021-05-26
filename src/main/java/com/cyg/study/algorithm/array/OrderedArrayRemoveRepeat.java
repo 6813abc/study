@@ -1,4 +1,4 @@
-package com.cyg.study.algorithm;
+package com.cyg.study.algorithm.array;
 
 /**
  * 在有序数组中去掉重复的数字，返回一共有多少个不重复的数字

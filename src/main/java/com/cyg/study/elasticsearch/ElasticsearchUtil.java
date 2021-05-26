@@ -34,7 +34,7 @@ import java.util.UUID;
  * @author cyg
  * @date 2021/4/22 16:38
  **/
-@Component
+//@Component
 public class ElasticsearchUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticsearchUtil.class);

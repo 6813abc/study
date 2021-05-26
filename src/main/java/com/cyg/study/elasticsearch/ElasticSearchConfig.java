@@ -16,7 +16,7 @@ import java.net.InetAddress;
  * @author cyg
  * @date 2021/4/22 16:35
  **/
-@Configuration
+//@Configuration
 public class ElasticSearchConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ElasticSearchConfig.class);
