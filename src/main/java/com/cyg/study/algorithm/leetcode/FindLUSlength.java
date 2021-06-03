@@ -15,8 +15,8 @@ public class FindLUSlength {
 
     public static int findLUSlength(String[] strs) {
         Map<String, Boolean> map = new HashMap<>();
-        int flag = 0;
         for (String str : strs) {
+            int flag = 0;
             for (String key : map.keySet()) {
                 if (isSon(key, str)) {
                     flag = 1;
@@ -26,15 +26,14 @@ public class FindLUSlength {
                 }
             }
             map.put(str, flag != 1);
-            flag = 0;
         }
-        int maxLength = 0;
+        int maxLength = -1;
         for (String key : map.keySet()) {
             if (Boolean.parseBoolean(map.get(key).toString())) {
                 maxLength = Math.max(key.length(), maxLength);
             }
         }
-        return maxLength == 0 ? -1 : maxLength;
+        return maxLength;
     }
 
     private static boolean isSon(String parent, String son) {
