@@ -40,6 +40,7 @@ public class FindNumsAppearOnce {
         for (int i = 1; i < array.length; i++) {
             c ^= array[i];
         }
+        //求从右往左第一个1
         int tmp = c - (c & (c - 1));
         int val1 = 0;
         for (int val : array) {
