@@ -7,7 +7,7 @@ package com.cyg.study.algorithm.swordFingerOffer;
  * @author cyg
  * @date 2021/6/15 10:08
  **/
-public class findKthToTail {
+public class FindKthToTail {
     public static class ListNode {
         int val;
         ListNode next = null;
@@ -17,7 +17,7 @@ public class findKthToTail {
         }
     }
 
-    public ListNode FindKthToTail(ListNode pHead, int k) {
+    public ListNode findKthToTail(ListNode pHead, int k) {
         if (pHead == null || k == 0) {
             return null;
         }
