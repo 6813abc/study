@@ -10,22 +10,23 @@ package com.cyg.study.algorithm.swordFingerOffer;
  **/
 public class CutRope {
 
-    public int cutRope(int target) {
+    public static int cutRope(int target) {
         if (target == 0) return 0;
         if (target == 1 || target == 2) return 1;
         if (target == 3) return 2;
-        int m = target % 3;
-        target = target / 3;
-        target = (int) Math.pow(3, target - 1);
-        switch (m) {
-            case 0:
-                return target * 3;
-            case 1:
-                return target * 4;
-            case 2:
-                return target * 6;
-            default:
-                return 0;
+        int m = 1;
+        while (target > 0) {
+            if (target == 4 || target == 2) {
+                m *= target;
+                return m;
+            }
+            m *= 3;
+            target = target - 3;
         }
+        return m;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(cutRope(17));
     }
 }
