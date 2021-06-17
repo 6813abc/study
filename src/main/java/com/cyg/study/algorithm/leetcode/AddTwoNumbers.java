@@ -30,21 +30,22 @@ public class AddTwoNumbers {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         BigInteger sum = new BigInteger("0");
         BigInteger k1 = new BigInteger("1");
-        BigInteger k2 = new BigInteger("1");
-        while (l1 != null) {
-            BigInteger val = new BigInteger(new BigInteger(l1.val + "").multiply(k1) + "");
-            sum = sum.add(val);
-            k1 = k1.multiply(new BigInteger(10 + ""));
-            l1 = l1.next;
-        }
-        while (l2 != null) {
-            BigInteger val = new BigInteger(new BigInteger(l2.val + "").multiply(k2) + "");
-            sum = sum.add(val);
-            k2 = k2.multiply(new BigInteger(10 + ""));
-            l2 = l2.next;
+        BigInteger k10 = new BigInteger("10");
+        while (l1 != null || l2 != null) {
+            if (l1 != null) {
+                BigInteger val = new BigInteger(String.valueOf(new BigInteger(String.valueOf(l1.val)).multiply(k1)));
+                sum = sum.add(val);
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                BigInteger val = new BigInteger(String.valueOf(new BigInteger(String.valueOf(l2.val)).multiply(k1)));
+                sum = sum.add(val);
+                l2 = l2.next;
+            }
+            k1 = k1.multiply(k10);
         }
         ListNode root = new ListNode();
-        String sumStr = sum + "";
+        String sumStr = String.valueOf(sum);
         int len = sumStr.length();
         for (int i = 0; i < len; i++) {
             ListNode p = new ListNode();
@@ -57,11 +58,39 @@ public class AddTwoNumbers {
         return root;
     }
 
-    public static void main(String[] args) {
+    public static ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
+        int k = 0;
+        ListNode root = null;
+        while (l1 != null || l2 != null) {
+            int s1 = 0;
+            int s2 = 0;
+            if (l1 != null) {
+                s1 = l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                s2 = l2.val;
+                l2 = l2.next;
+            }
+            int sum = s1 + s2 + k;
+            k = sum > 9 ? 1 : 0;
+            root = new ListNode(sum % 10, root);
+        }
+        if (k == 1) {
+            root = new ListNode(1, root);
+        }
+        ListNode node = null;
+        while (root != null) {
+            node = new ListNode(root.val, node);
+            root = root.next;
+        }
+        return node;
+    }
 
-        ListNode listNode1 = new ListNode(1);
-        ListNode listNode2 = new ListNode(1, listNode1);
-        ListNode listNode3 = new ListNode(1, listNode2);
+    public static void main(String[] args) {
+        ListNode listNode1 = new ListNode(3);
+        ListNode listNode2 = new ListNode(4, listNode1);
+        ListNode listNode3 = new ListNode(2, listNode2);
         ListNode listNode4 = new ListNode(1, listNode3);
         ListNode listNode5 = new ListNode(1, listNode4);
         ListNode listNode6 = new ListNode(1, listNode5);
@@ -71,9 +100,9 @@ public class AddTwoNumbers {
         ListNode listNode10 = new ListNode(1, listNode9);
         ListNode listNode11x = new ListNode(1, listNode10);
 
-        ListNode listNode11 = new ListNode(1);
-        ListNode listNode22 = new ListNode(1, listNode11);
-        ListNode listNode33 = new ListNode(1, listNode22);
+        ListNode listNode11 = new ListNode(4);
+        ListNode listNode22 = new ListNode(6, listNode11);
+        ListNode listNode33 = new ListNode(5, listNode22);
         ListNode listNode44 = new ListNode(1, listNode33);
         ListNode listNode55 = new ListNode(1, listNode44);
         ListNode listNode66 = new ListNode(1, listNode55);
@@ -84,7 +113,7 @@ public class AddTwoNumbers {
         ListNode listNode111 = new ListNode(1, listNode101);
 
 
-        ListNode listNode1xx = addTwoNumbers(listNode11x, listNode111);
+        ListNode listNode1xx = addTwoNumbers1(listNode3, listNode33);
         while (listNode1xx != null) {
             System.out.println(listNode1xx.val);
             listNode1xx = listNode1xx.next;
