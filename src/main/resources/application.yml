@@ -1,3 +1,4 @@
+#环境变量已经配置了dev，这个配置不生效
 spring:
   profiles:
-    active: local
+    active: dev
